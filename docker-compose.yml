@@ -3,7 +3,7 @@ services:
   telegraf:
     image: telegraf:1.18-alpine
     volumes:
-    - ./telegraf/etc/telegraf/:/etc/telegraf
+    - ./telegraf/etc/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf
     depends_on:
       - influxdb
     links:
