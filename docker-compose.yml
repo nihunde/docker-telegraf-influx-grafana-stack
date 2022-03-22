@@ -3,7 +3,7 @@ services:
   telegraf:
     image: telegraf:1.18-alpine
     volumes:
-    - ./telegraf/etc/telegraf:/etc/telegraf/
+    - ./telegraf/etc/telegraf:/etc/telegraf
     depends_on:
       - influxdb
     links:
@@ -13,7 +13,6 @@ services:
 
   influxdb:
     image: influxdb:1.8-alpine
-    env_file: configuration.env
     ports:
       - '8086:8086'
     volumes:
@@ -24,7 +23,6 @@ services:
     image: grafana/grafana:8.0.2
     depends_on:
       - influxdb
-    env_file: configuration.env
     links:
       - influxdb
     ports:
